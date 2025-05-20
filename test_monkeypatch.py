@@ -1,5 +1,4 @@
 # %%
-import pytest
 import time
 
 
@@ -18,6 +17,15 @@ def calculate_sum(a: int | float, b: int | float) -> str:
 # %%
 calculate_sum(2, 2)
 # %%
+start = time.perf_counter()  # Start timer
+
+result = calculate_sum(2, 2)
+
+end = time.perf_counter()    # End timer
+
+print(result)
+print(f"Elapsed time: {end - start:.2f} seconds")
+# %%
 
 
 def test_calculate_sum(monkeypatch):
@@ -31,3 +39,6 @@ def test_calculate_sum(monkeypatch):
     result = calculate_sum(2, 2)
 
     assert result == "Sum of the 2 Numbers is `4`"
+
+# %%
+# pytest test_monkeypatch.py -v --durations=0 
