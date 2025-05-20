@@ -1,8 +1,11 @@
-name: demo_1
+name: demos_env
 channels:
   - conda-forge
 dependencies:
   - python=3.13
+  - pyyaml
+  - pytest
+  - ipykernel
   - pip
   - pip:
       - argparse
