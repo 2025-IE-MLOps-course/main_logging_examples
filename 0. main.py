@@ -10,7 +10,7 @@ This script shows how to:
 """
 
 import argparse
-from welcome.greetings import format_greeting
+from src.welcome.greetings import format_greeting
 
 
 def main() -> None:

@@ -6,6 +6,7 @@ dependencies:
   - pyyaml
   - pytest
   - ipykernel
+  - pytest-dotenv
   - pip
   - pip:
       - argparse
