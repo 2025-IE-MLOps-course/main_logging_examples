@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
+import pickle
 
 # %% Load dataset ----------------------
 data = load_iris()
@@ -84,3 +85,55 @@ print(f"Test accuracy: {accuracy:.2f}")
 sample = X.iloc[[100]]
 pred = pipe_with_custom.predict(sample)
 print(f"Prediction for sample: {pred[0]}")
+
+# %% Enforcing leakage-proof pipeline ----------------------
+
+# Define the preprocessing pipeline (SumFeatures + Scaler only)
+preprocessing_pipeline = Pipeline([
+    ('sum_features', SumFeatures()),
+    ('scaler', StandardScaler())
+])
+
+# Fit only on training data
+preprocessing_pipeline.fit(X_train)
+
+# Save the fitted preprocessing pipeline
+with open('preprocessing_pipeline.pkl', 'wb') as f:
+    pickle.dump(preprocessing_pipeline, f)
+
+# %% Separate model training from preprocessing ----------------------
+
+# Transform data for model training
+X_train_processed = preprocessing_pipeline.transform(X_train)
+X_test_processed = preprocessing_pipeline.transform(X_test)
+
+# %% Train the model on processed data
+# Save the trained model (on processed data)
+model_separated = LogisticRegression()
+model_separated.fit(X_train_processed, y_train)
+
+with open('model_separated.pkl', 'wb') as f:
+    pickle.dump(model_separated, f)
+
+print("Saved preprocessing pipeline and model separately.")
+
+
+# %% Load and apply artifacts for prediction ----------------------
+
+with open('preprocessing_pipeline.pkl', 'rb') as f:
+    loaded_preprocessor = pickle.load(f)
+
+with open('model_separated.pkl', 'rb') as f:
+    loaded_model = pickle.load(f)
+
+# Prepare a new sample (or batch)
+new_sample = X.iloc[[100]]
+
+# Apply preprocessing
+sample_processed = loaded_preprocessor.transform(new_sample)
+
+# Predict with the model
+pred = loaded_model.predict(sample_processed)
+print(f"Prediction from separated artifacts: {pred[0]}")
+
+# %%
