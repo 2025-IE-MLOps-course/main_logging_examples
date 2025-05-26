@@ -1,0 +1,10 @@
+name: ml_pipe
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - scikit-learn
+  - pandas
+  - numpy
+  - jupyterlab
+  - ipykernel
