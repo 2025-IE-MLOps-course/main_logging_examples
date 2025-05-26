@@ -14,7 +14,7 @@ def test_add_logs_info(caplog):
     # caplog captures logs, here at INFO level
     add(2, 3)
     # Check that the correct log message appears
-    assert "Adding 2 and 3, result is 5" in caplog.text
+    assert "Adding 2 and 3, result is 6" in caplog.text
 
 
 # Test if the model is trained under expected accuracy
