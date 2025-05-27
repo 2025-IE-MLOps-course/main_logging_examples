@@ -5,4 +5,4 @@ entry_points:
   main:
     parameters:
       message: {type: str, default: "Hello from Main"}
-    command: "python main.py --message \"{message}\""
+    command: "python main.py --message {message}"

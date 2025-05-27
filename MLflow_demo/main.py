@@ -1,14 +1,22 @@
 import argparse
 import mlflow
 import sys
-print("ARGV seen by Python:", sys.argv)
+import os
 
 
 def main(args):
-    print(f"Main received message: {args.message}")
-    # Run the module as a separate MLflow project
+
+    # Get the absolute path to the directory where main.py is located
+    main_script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the absolute path to the submodule's URI
+    module_uri = os.path.join(main_script_dir, "src", "hello_module")
+
+    print(f"Calling submodule with absolute URI: {module_uri}")
+
+    # Run the module as a separate MLflow project using the absolute path
     result = mlflow.run(
-        uri="src/hello_module",
+        uri=module_uri,
         entry_point="main",
         parameters={"message": args.message},
         env_manager="conda"
