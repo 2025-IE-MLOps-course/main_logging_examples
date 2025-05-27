@@ -42,3 +42,6 @@ Thumbs.db
 # VSCode and other IDE config
 .vscode/
 .idea/
+
+# wandb and other tracking files
+wandb/
