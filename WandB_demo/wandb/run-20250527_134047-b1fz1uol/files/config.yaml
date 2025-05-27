@@ -1,0 +1,28 @@
+_wandb:
+    value:
+        cli_version: 0.19.11
+        code_path: source-wandb_basic_demo-c__Users_idiaz_OneDrive_-_IE_University..Ops_My_projects_main_logging_examples_WandB_demo_wandb_basic.py
+        m: []
+        python_version: 3.13.3
+        t:
+            "1":
+                - 55
+            "2":
+                - 55
+            "3":
+                - 2
+                - 16
+                - 23
+                - 55
+            "4": 3.13.3
+            "5": 0.19.11
+            "8":
+                - 1
+                - 3
+                - 5
+            "12": 0.19.11
+            "13": windows-amd64
+epochs:
+    value: 10
+learning_rate:
+    value: 0.01

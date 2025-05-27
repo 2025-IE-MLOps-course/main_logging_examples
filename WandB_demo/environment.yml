@@ -1,0 +1,16 @@
+name: wandb_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - wandb
+  - ipykernel
+  - pandas
+  - scikit-learn
+  - openpyxl
+  - python-dotenv
+  - nbformat 
+
+
+
