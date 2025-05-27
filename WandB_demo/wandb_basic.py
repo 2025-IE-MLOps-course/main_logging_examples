@@ -9,7 +9,8 @@ import random
 # Load environment variables from .env file
 load_dotenv(dotenv_path="C:/Users/idiaz/OneDrive - IE University/00. IE Courses/01. 2025_H1/4. MLOps/My projects/main_logging_examples/WandB_demo/.env")
 # %%
-wandb.login(key=os.getenv("WANDB_API_KEY"))
+wandb.login()  # Login to WandB using the API key from the environment variable
+# wandb.login(key=os.getenv("WANDB_API_KEY"))
 
 # %%
 # set up experiement
