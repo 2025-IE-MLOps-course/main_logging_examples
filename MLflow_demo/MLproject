@@ -1,0 +1,8 @@
+name: mlflow_main_demo
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      message: {type: str, default: "Hello from Main"}
+    command: "python main.py --message \"{message}\""

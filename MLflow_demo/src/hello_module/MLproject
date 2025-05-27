@@ -1,0 +1,8 @@
+name: hello_module
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      message: { type: str, default: "Hello from module"}
+    command: "python run.py --message \"{message}\""

@@ -45,3 +45,4 @@ Thumbs.db
 
 # wandb and other tracking files
 wandb/
+mlruns/
