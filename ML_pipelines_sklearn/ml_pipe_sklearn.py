@@ -12,7 +12,7 @@ import pickle
 data = load_iris()
 df = pd.DataFrame(data.data, columns=data.feature_names)
 df['target'] = data.target
-print(df.head())
+df.head()
 
 # %% Typical data splitting ----------------------
 
@@ -23,12 +23,18 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42)
 print(X_train.shape, X_test.shape)
 
+# %% ----------------------
+y_train.value_counts(), y_test.value_counts()
+
+# full set
+df['target'].value_counts()
+
 # %% Manual preprocessing ----------------------
 
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
-print(X_train_scaled[:5])
+X_train_scaled[:5]
 
 # %% Manual model fitting ----------------------
 
@@ -67,7 +73,7 @@ class SumFeatures(BaseEstimator, TransformerMixin):
 
 # Test custom transformer
 sum_features = SumFeatures()
-print(sum_features.fit_transform(X_train).head())
+sum_features.fit_transform(X_train).head()
 # %% Pipeline with custom transformer ----------------------
 
 pipe_with_custom = Pipeline([
